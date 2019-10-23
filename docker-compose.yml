@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  rabbitmq:
+    image: rabbitmq
+  receiver:
+    image: ${DOCKER_REGISTRY-}receiver
+    build:
+      context: .
+      dockerfile: Receiver/Dockerfile
+    environment:
+      - hostname=rabbitmq
+      - queuename=helloworld
+  sender:
+    image: ${DOCKER_REGISTRY-}sender
+    build:
+      context: .
+      dockerfile: Sender/Dockerfile
+    environment:
+      - hostname=rabbitmq
+      - queuename=helloworld

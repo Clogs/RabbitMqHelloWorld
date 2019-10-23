@@ -1,0 +1,20 @@
+services:
+  rabbitmq:
+    image: rabbitmq
+  receiver:
+    build:
+      context: F:\Coding\New folder\Sender
+      dockerfile: Receiver/Dockerfile
+    environment:
+      hostname: rabbitmq
+      queuename: helloworld
+    image: receiver
+  sender:
+    build:
+      context: F:\Coding\New folder\Sender
+      dockerfile: Sender/Dockerfile
+    environment:
+      hostname: rabbitmq
+      queuename: helloworld
+    image: sender
+version: '3.4'
