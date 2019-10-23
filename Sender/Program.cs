@@ -15,8 +15,8 @@ namespace Sender
                 }
             );
 
-            Console.WriteLine("Name");
-            var name = "HAI";
+            Console.WriteLine("Please enter your name:");
+            var name = Console.ReadLine();
 
             var messenger = new Messenger(new ConnectionFactory { HostName = config.HostName }, loggerFactory.CreateLogger("Messenger"));
 
